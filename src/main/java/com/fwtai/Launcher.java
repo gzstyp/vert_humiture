@@ -1,7 +1,7 @@
 package com.fwtai;
 
 import com.fwtai.config.ConfigFiles;
-import com.fwtai.service.SqlServerHandle;
+import com.fwtai.service.HumitureHandle;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 import io.vertx.core.http.HttpMethod;
@@ -41,7 +41,7 @@ public class Launcher extends AbstractVerticle {
     httpServer.requestHandler(router).listen(ConfigFiles.port,http -> {
       if (http.succeeded()) {
         startPromise.complete();
-        System.out.println("---应用启动成功---");
+        System.out.println("---应用启动成功---"+ConfigFiles.port);
       } else {
         startPromise.fail(http.cause());
         System.out.println("---应用启动失败---");
@@ -49,7 +49,7 @@ public class Launcher extends AbstractVerticle {
     });
 
     //第四步,配置Router解析url
-    // http://127.0.0.1/api/sqlServer?route=map|list
-    router.route("/api/sqlServer").handler(new SqlServerHandle(vertx));
+    // http://127.0.0.1:10004/api/humiture?route=list
+    router.route("/api/humiture").handler(new HumitureHandle(vertx));
   }
 }

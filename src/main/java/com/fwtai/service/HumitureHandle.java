@@ -8,11 +8,11 @@ import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.json.JsonArray;
 import io.vertx.ext.web.RoutingContext;
 
-public class SqlServerHandle implements Handler<RoutingContext>{
+public class HumitureHandle implements Handler<RoutingContext>{
 
   private final Vertx vertx;
 
-  public SqlServerHandle(final Vertx vertx){
+  public HumitureHandle(final Vertx vertx){
     this.vertx = vertx;
   }
 
